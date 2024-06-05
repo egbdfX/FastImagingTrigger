@@ -2,7 +2,16 @@
 
 We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
 
+## User guidance
 
+**Step 1:**
+Make sure GCCcore, CUDA, and CFITSIO are avaiable. If you see a warning saying ```/usr/bin/ld.gold: warning: /apps/system/easybuild/software/GCCcore/11.2.0/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o: unknown program property type 0xc0010002 in .note.gnu.property section```, you would need to make sure Python is also available.
+
+**Step 2:**
+Run the Makefile by ```make```. Note that this Makefile is written for NVIDIA H100. If you are using other GPU, you would need to make sure the CUDA arch is matching.
+
+**Step 3:**
+Run the codes by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file).
 
 ## Reference
 
