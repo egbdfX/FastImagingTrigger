@@ -1,6 +1,6 @@
 # Fast Imaging Trigger
 
-We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
+We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs?tab=readme-ov-file#tlisi-tlisipy). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
 
 ## User guidance
 
@@ -11,22 +11,14 @@ Make sure GCCcore, CUDA, and CFITSIO are avaiable. If you see a warning saying `
 Run the Makefile by ```make```. Note that this Makefile is written for NVIDIA H100. If you are using other GPU, you would need to make sure the CUDA arch is matching.
 
 **Step 3:**
-Run the codes by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file).
+Run the code by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file).
 
 **Step 4:**
-The codes will output a FITS file named ```output_tLISI.fits```, which is the output tLISI matrix.
+The code will output a FITS file named ```output_tLISI.fits```, which is the output tLISI matrix.
 
 ## Reference
 
-**When referencing ITW-SSIM or LISI, please cite our related paper:**
-
-X. Li and W. Armour, "Intensity-Sensitive Similarity Indexes for Image Quality Assessment," 2022 26th International Conference on Pattern Recognition (ICPR), Montreal, QC, Canada, 2022, pp. 1975-1981, doi: 10.1109/ICPR56361.2022.9956093.
-
-**When referencing augLISI, please cite our related paper:**
-
-X. Li, K. Adámek, W. Armour, "Intensity-sensitive quality assessment of extended sources in astronomical images," 2024.
-
-**When referencing tLISI, please cite our related paper:**
+**When referencing this code, please cite our related paper:**
 
 X. Li, K. Adámek, W. Armour, "GPU-accelerated fast imaging trigger for source localisation in transient detection," 2024.
 
