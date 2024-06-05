@@ -1,1 +1,1 @@
-# FastImagingTrigger
+# Fast Imaging Trigger
