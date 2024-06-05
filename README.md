@@ -11,7 +11,7 @@ Make sure GCCcore, CUDA, and CFITSIO are avaiable. If you see a warning saying `
 Run the Makefile by ```make```. Note that this Makefile is written for NVIDIA H100. If you are using other GPU, you would need to make sure the CUDA arch is matching.
 
 **Step 3:**
-Run the code by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file).
+Run the code by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file). The three input images should have the same size.
 
 **Step 4:**
 The code will output a FITS file named ```output_tLISI.fits```, which is the output tLISI matrix.
