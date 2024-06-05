@@ -13,6 +13,9 @@ Run the Makefile by ```make```. Note that this Makefile is written for NVIDIA H1
 **Step 3:**
 Run the codes by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file).
 
+**Step 4:**
+The codes will output a FITS file named ```output_tLISI.fits```, which is the output tLISI matrix.
+
 ## Reference
 
 **When referencing ITW-SSIM or LISI, please cite our related paper:**
