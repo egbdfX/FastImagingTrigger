@@ -1,30 +1,8 @@
 # Fast Imaging Trigger
 
-We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs). Please see our papers in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
+We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
 
-## ITW-SSIM (itw.py)
 
-ITW-SSIM function is written in Python.
-
-```out = itw(x,y,type_str)``` calculates the ITW-SSIM value for image ```x``` and image ```y```. ```x``` and ```y``` must be of the same size and class, and both images have been normalised to the comparable intensity scale. The output ITW-SSIM, ```out```, is a scalar. The weighting mode ```type_str``` needs to be inputted with ```'Gau'``` for Gaussian-based weighting function, ```'tanh'``` for tanh-based weighting function, and ```'sigm'``` for sigmoid-based weighting function.
-
-## LISI (lisi.py)
-
-LISI function is written in Python.
-
-```out = lisi(x,y)``` calculates the LISI value for image ```x``` and image ```y```. ```x``` and ```y``` must be of the same size and class, and both images have been normalised to the comparable intensity scale. The output LISI, ```out```, is a scalar.
-
-## augLISI (auglisi.py)
-
-augLISI function is written in Python.
-
-```out = auglisi(x,y)``` calculates the augLISI value for image ```x``` and image ```y```. ```x``` and ```y``` must be of the same size and class, and both images have been normalised to the comparable intensity scale. The output augLISI, ```out```, is a scalar.
-
-## tLISI (tlisi.py)
-
-tLISI function is written in Python.
-
-```out = tlisi(x,y,snap,maxx)``` calculates the tLISI value for difference image ```x``` and difference image ```y```, where ```x``` and ```y``` must be of the same size and class. ```snap``` is the reference snapshot image and ```maxx``` is the maximum pixel value in the sequential images.
 
 ## Reference
 
