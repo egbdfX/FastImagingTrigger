@@ -126,9 +126,9 @@ int main(int argc, char* argv[]) {
     
     float* result_array = (float*)malloc(unit_num*unit_num*sizeof(float));
     
-	splittlisi(data_1_array, data_2_array, input_snap, result_array, imapow, unit_size, ima, maxall);
+    splittlisi(data_1_array, data_2_array, input_snap, result_array, imapow, unit_size, ima, maxall);
 	
-	long naxes[2] = {long(unit_num), long(unit_num)};
+    long naxes[2] = {long(unit_num), long(unit_num)};
     int status = write_fits_image("output_tLISI.fits", result_array, naxes);
     if (status) {
         fprintf(stderr, "Error writing FITS image\n");
