@@ -17,7 +17,7 @@ Run the code by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where 
 The code will output a FITS file named ```output_tLISI.fits```, which is the output tLISI matrix.
 
 ## Contact
-If you have any questions or need further assistance, feel free to contact at [egbdfmusic1@gmail.com](mailto:egbdfmusic1@gmail.com).
+If you have any questions or need further assistance, please feel free to contact at [egbdfmusic1@gmail.com](mailto:egbdfmusic1@gmail.com).
 
 ## Reference
 
