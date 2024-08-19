@@ -8,7 +8,7 @@ We have developed a tLISI-based GPU-accelerated fast imaging trigger for transie
 Make sure GCCcore, CUDA, and CFITSIO are avaiable. If you see a warning saying ```/usr/bin/ld.gold: warning: /apps/system/easybuild/software/GCCcore/11.2.0/lib/gcc/x86_64-pc-linux-gnu/11.2.0/crtbegin.o: unknown program property type 0xc0010002 in .note.gnu.property section```, you would need to make sure Python is also available.
 
 **Step 2:**
-Run the Makefile by ```make```. Note that this Makefile is written for NVIDIA H100. If you are using other GPU, you would need to make sure the CUDA arch is matching.
+Run the Makefile by ```make```. Note that this Makefile is written for NVIDIA H100. If you are using other GPUs, you would need to make sure the CUDA arch is matching.
 
 **Step 3:**
 Run the code by ```./sharedlibrary_gpu dif1.fits dif2.fits snap1.fits```, where ```dif1.fits``` and ```dif2.fits``` are the two difference images (FITS files), and ```snap1.fits``` is the reference snapshot image (FITS file). The three input images should have the same size.
