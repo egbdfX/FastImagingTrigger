@@ -131,66 +131,14 @@ int splittlisi(float* input_data_1, float* input_data_2, float* input_snap, floa
     size_t num_threads = 1024;
     size_t num_blocks = computeCeil(static_cast<float>(size)/num_threads);
     setNegativeToZero<<<num_blocks,num_threads>>>(d_data_1, size);
-    cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "Error 1 : %s\n", cudaGetErrorString(cudaStatus));
-	}
 	
-		cudaError_t cudaError;
-		cudaError = cudaGetLastError();
-		if(cudaError != cudaSuccess){
-			printf("ERROR! GPU Kernel error.\n");
-			printf("CUDA error code: %d; string: %s;\n", (int) cudaError, cudaGetErrorString(cudaError));
-		}
-		else {
-			printf("No CUDA error.\n");
-		}
-		
     setNegativeToZero<<<num_blocks,num_threads>>>(d_data_2, size);
-    cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "Error 2 : %s\n", cudaGetErrorString(cudaStatus));
-	}
-	
-		cudaError = cudaGetLastError();
-		if(cudaError != cudaSuccess){
-			printf("ERROR! GPU Kernel error.\n");
-			printf("CUDA error code: %d; string: %s;\n", (int) cudaError, cudaGetErrorString(cudaError));
-		}
-		else {
-			printf("No CUDA error.\n");
-		}
-	
-	setNonPositiveToC<<<num_blocks,num_threads>>>(snap_data, size, C);
-	cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "Error 3 : %s\n", cudaGetErrorString(cudaStatus));
-	}
-		
-		cudaError = cudaGetLastError();
-		if(cudaError != cudaSuccess){
-			printf("ERROR! GPU Kernel error.\n");
-			printf("CUDA error code: %d; string: %s;\n", (int) cudaError, cudaGetErrorString(cudaError));
-		}
-		else {
-			printf("No CUDA error.\n");
-		}
     
+    setNonPositiveToC<<<num_blocks,num_threads>>>(snap_data, size, C);
+
     num_threads = 1024;
     num_blocks = computeCeil(static_cast<float>(size)/num_threads);
     subtraction_array<<<num_blocks,num_threads>>>(d_data_1, d_data_2, diff_out, size);
-    cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "Error 12 : %s\n", cudaGetErrorString(cudaStatus));
-	}
-		cudaError = cudaGetLastError();
-		if(cudaError != cudaSuccess){
-			printf("ERROR! GPU Kernel error.\n");
-			printf("CUDA error code: %d; string: %s;\n", (int) cudaError, cudaGetErrorString(cudaError));
-		}
-		else {
-			printf("No CUDA error.\n");
-		}
     
     num_threads = 1024;
     num_blocks = unit_num*unit_num;
@@ -200,21 +148,16 @@ int splittlisi(float* input_data_1, float* input_data_2, float* input_snap, floa
     if (cudaStatus != cudaSuccess) {
         fprintf(stderr, "Error 13 : %s\n", cudaGetErrorString(cudaStatus));
 	}
-		
-		cudaError = cudaGetLastError();
-		if(cudaError != cudaSuccess){
-			printf("ERROR! GPU Kernel error.\n");
-			printf("CUDA error code: %d; string: %s;\n", (int) cudaError, cudaGetErrorString(cudaError));
-		}
-		else {
-			printf("No CUDA error.\n");
-		}
+    cudaError = cudaGetLastError();
+    if(cudaError != cudaSuccess){
+        printf("ERROR! GPU Kernel error.\n");
+        printf("CUDA error code: %d; string: %s;\n", (int) cudaError, cudaGetErrorString(cudaError));
+    }
+    else {
+        printf("No CUDA error.\n");
+    }
 
-	cudaMemcpy(result_array, result_data, unit_num * unit_num * sizeof(float), cudaMemcpyDeviceToHost);
-	cudaStatus = cudaDeviceSynchronize();
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "Error 14 : %s\n", cudaGetErrorString(cudaStatus));
-	}
+    cudaMemcpy(result_array, result_data, unit_num * unit_num * sizeof(float), cudaMemcpyDeviceToHost);
 
     cudaFree(d_data_1);
     cudaFree(d_data_2);
