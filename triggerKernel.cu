@@ -20,7 +20,7 @@ size_t computeCeil(float num) {
     return ceilf(num);
 }
 
-__device__ float ceil_device(float num) {
+__device__ size_t ceil_device(float num) {
     return ceilf(num);
 }
 
