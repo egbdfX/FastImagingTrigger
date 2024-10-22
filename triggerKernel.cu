@@ -65,42 +65,42 @@ __global__ void tlisi(float* diff_out, float* snap, float* result, size_t size, 
     size_t cols;
     
     for (size_t fac = 1; fac <= factor;fac = fac + 1){
-		if (tid+(fac-1)*1024 < unit_size*unit_size){
-			if (fac == 1) {
-				sharedNumDen[tid] = 0; // Sum of diff_out
-				sharedNumDen[tid+1024] = 0; // Max of diff_out
-				sharedNumDen[tid+2048] = 0; // Sum of r
-			}
-			rows = floor_device((tid+(fac-1)*1024)/unit_size);
-			cols = fmod_device((tid+(fac-1)*1024),unit_size);
+        if (tid+(fac-1)*1024 < unit_size*unit_size){
+            if (fac == 1) {
+                sharedNumDen[tid] = 0; // Sum of diff_out
+                sharedNumDen[tid+1024] = 0; // Max of diff_out
+                sharedNumDen[tid+2048] = 0; // Sum of r
+            }
+            rows = floor_device((tid+(fac-1)*1024)/unit_size);
+            cols = fmod_device((tid+(fac-1)*1024),unit_size);
 			
-			I_id = i_id * unit_size + rows;
-			J_id = j_id * unit_size + cols;
+            I_id = i_id * unit_size + rows;
+            J_id = j_id * unit_size + cols;
 			
-			sharedNumDen[tid] = sharedNumDen[tid] + diff_out[I_id * ima + J_id];
-			sharedNumDen[tid+1024] = max(sharedNumDen[tid+1024], diff_out[I_id * ima + J_id]);
-			sharedNumDen[tid+2048] = (diff_out[I_id * ima + J_id]/snap[I_id * ima + J_id] < 1) ? sharedNumDen[tid+2048] +  diff_out[I_id * ima + J_id]/snap[I_id * ima + J_id]: sharedNumDen[tid+2048] + 1;
-		} else {
-			if (fac == 1) {
-				sharedNumDen[tid] = 0; // Sum of diff_out
-				sharedNumDen[tid+1024] = 0; // Max of diff_out
-				sharedNumDen[tid+2048] = 0; // Sum of r
-			}
-		}
-	}
+            sharedNumDen[tid] = sharedNumDen[tid] + diff_out[I_id * ima + J_id];
+            sharedNumDen[tid+1024] = max(sharedNumDen[tid+1024], diff_out[I_id * ima + J_id]);
+            sharedNumDen[tid+2048] = (diff_out[I_id * ima + J_id]/snap[I_id * ima + J_id] < 1) ? sharedNumDen[tid+2048] +  diff_out[I_id * ima + J_id]/snap[I_id * ima + J_id]: sharedNumDen[tid+2048] + 1;
+        } else {
+            if (fac == 1) {
+                sharedNumDen[tid] = 0; // Sum of diff_out
+                sharedNumDen[tid+1024] = 0; // Max of diff_out
+                sharedNumDen[tid+2048] = 0; // Sum of r
+            }
+        }
+    }
     
     for (size_t d = blockDim.x/2;d>0;d = d/2){
-		__syncthreads();
-		if (tid<d) {
-			sharedNumDen[tid] += sharedNumDen[tid+d];
-			sharedNumDen[tid+1024] = max(sharedNumDen[tid+1024], sharedNumDen[tid+1024+d]);
-			sharedNumDen[tid+2048] += sharedNumDen[tid+2048+d];
-		}
-	}
+        __syncthreads();
+        if (tid<d) {
+            sharedNumDen[tid] += sharedNumDen[tid+d];
+            sharedNumDen[tid+1024] = max(sharedNumDen[tid+1024], sharedNumDen[tid+1024+d]);
+            sharedNumDen[tid+2048] += sharedNumDen[tid+2048+d];
+        }
+    }
 	
-	if (tid==0) {
-		result[bid] = 1-(sharedNumDen[0]/unit_size/unit_size)*sharedNumDen[1024]*(sharedNumDen[2048]/unit_size/unit_size)/maxall/maxall;
-	}
+    if (tid==0) {
+        result[bid] = 1-(sharedNumDen[0]/unit_size/unit_size)*sharedNumDen[1024]*(sharedNumDen[2048]/unit_size/unit_size)/maxall/maxall;
+    }
 }
 
 int splittlisi(float* input_data_1, float* input_data_2, float* input_snap, float* result_array, size_t size, size_t unit_size, size_t ima, float maxall) {
@@ -147,7 +147,7 @@ int splittlisi(float* input_data_1, float* input_data_2, float* input_snap, floa
     cudaStatus = cudaDeviceSynchronize();
     if (cudaStatus != cudaSuccess) {
         fprintf(stderr, "Error 13 : %s\n", cudaGetErrorString(cudaStatus));
-	}
+    }
     cudaError = cudaGetLastError();
     if(cudaError != cudaSuccess){
         printf("ERROR! GPU Kernel error.\n");
