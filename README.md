@@ -1,4 +1,4 @@
-# Fast Imaging Trigger
+# Fast Imaging Trigger (FITrig)
 
 We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs?tab=readme-ov-file#tlisi-tlisipy). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
 
@@ -23,7 +23,7 @@ If you have any questions or need further assistance, please feel free to contac
 
 **When referencing this code, please cite our related paper:**
 
-X. Li, K. Adámek, W. Armour, "GPU-accelerated fast imaging trigger for source localisation in transient detection," 2024.
+X. Li, K. Adámek, W. Armour, "FITrig: A High-Performance Detection Technique for Efficient Ultra-Low-Frequency Pulsars," 2025.
 
 ## License
 
