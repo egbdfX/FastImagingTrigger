@@ -23,7 +23,7 @@ If you have any questions or need further assistance, please feel free to contac
 
 **When referencing this code, please cite our related paper:**
 
-X. Li, K. Adámek, W. Armour, "[FITrig: A High-Performance Detection Technique for Efficient Ultra-Long-Period Pulsars](https://arxiv.org/abs/2509.21754)," 2025.
+X. Li, K. Adamek, and W. Armour, "FITrig: A High-Performance Detection Technique for Efficient Ultra-Long-Period Pulsars," A&C, vol. 55, 2026, 101058, doi: 10.1016/j.ascom.2025.101058.
 
 ## License
 
