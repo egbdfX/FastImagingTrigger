@@ -110,7 +110,7 @@ int splittlisi(float* input_data_1, float* input_data_2, float* input_snap, floa
     float* diff_out;
     float* snap_data;
     float* result_data;
-    cudaError_t cudaStatus;
+    cudaError_t cudaStatus,cudaError;
     float C = 1e-6;
     
     size_t unit_num = ima/unit_size;
