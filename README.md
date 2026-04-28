@@ -1,6 +1,6 @@
 # Fast Imaging Trigger (FITrig)
 
-We have developed a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs?tab=readme-ov-file#tlisi-tlisipy). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
+We develop a tLISI-based GPU-accelerated fast imaging trigger for transient detection in radio astronomy. The CPU version of tLISI is displayed on [tLISI](https://github.com/egbdfX/Intensity-sensitive-IQAs?tab=readme-ov-file#tlisi-tlisipy). Please see our paper in Section [Reference](https://github.com/egbdfX/FastImagingTrigger/tree/main#reference) for more information.
 
 ## User guidance
 
